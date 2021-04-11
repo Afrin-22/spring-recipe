@@ -8,33 +8,39 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(exclude = {"recipes"})
 @Entity
 public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private String categoryName;
 	
 	@ManyToMany(mappedBy = "categories")
 	private Set<Recipe> recipes;
 
-	public Long getId() {
-		return id;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
+//	Replacing below with @Data annotation
+	
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public String getCategoryName() {
+//		return categoryName;
+//	}
+//
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
+//
+//	public void setCategoryName(String categoryName) {
+//		this.categoryName = categoryName;
+//	}
 	
 }
